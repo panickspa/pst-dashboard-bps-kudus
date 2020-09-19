@@ -1,0 +1,78 @@
+* {
+    --primary-color : rgb(235, 235, 235);
+    --primary-color-light : rgb(253, 253, 253);
+    --secondary-color : rgba(102, 102, 102, 0.411);
+    --secondary-color-shader : rgb(167, 167, 167);
+    --secondary-color-light : rgb(221, 221, 221);
+    --link-color: #008cff;
+    --link-visited-color: rgb(89, 0, 255);
+    --red: rgb(255, 30, 0);
+    --red-light: rgb(255, 181, 172);
+    --green: rgb(3, 236, 54);
+    --yellow: rgb(255, 219, 16);
+    --font-default : black;
+}
+
+.classic-grey *{
+    --primary-background: white;
+    --font-default : black;
+    --primary-color : rgb(235, 235, 235);
+    --primary-color-light : rgb(243, 243, 243);
+    --secondary-color : rgb(167, 167, 167);
+    --secondary-color-light : rgb(221, 221, 221);
+    --secondary-color-shader : rgba(167, 167, 167, 0.465);
+}
+
+.dark *{
+    color: white;
+    --primary-background: black;
+    --font-default: white;
+    --primary-color : rgb(36, 36, 36);
+    --primary-color-light : rgb(73, 73, 73);
+    --secondary-color : rgb(226, 226, 226);
+    --secondary-color-light : rgb(206, 206, 206);
+    --secondary-color-shader : rgba(228, 228, 228, 0.472);
+}
+
+.navy-blue *{
+    color: white;
+    --primary-background: black;
+    --font-default: white;
+    --primary-color : rgb(0, 39, 71);
+    --primary-color-light : rgb(0, 12, 68);
+    --secondary-color : rgb(0, 105, 226);
+    --secondary-color-light : rgb(96, 158, 230);
+    --secondary-color-shader : rgba(96, 158, 230, 0.472);
+}
+
+.brown *{
+    color: white;
+    --primary-background: #361c00;
+    --font-default: white;
+    --primary-color :  #7B3F00;
+    --primary-color-light : #7a5f42;
+    --secondary-color : #ff8400;
+    --secondary-color-light : rgb(255, 187, 113);
+    --secondary-color-shader : rgba(228, 228, 228, 0.472);
+}
+
+.ocean-blue *{
+    color: black;
+    --primary-background: white;
+    --font-default : black;
+    --primary-color : rgb(210, 246, 255);
+    --primary-color-light : rgb(246, 251, 251);
+    --secondary-color : rgb(54, 215, 255);
+    --secondary-color-light : rgb(219, 248, 255);
+    --secondary-color-shader : rgba(0, 107, 134, 0.226);
+}
+
+.cream *{
+    --font-default : black;
+    --primary-background: #fdf4e8;
+    --primary-color : #fdebd6 !important;
+    --primary-color-light :rgb(253, 244, 235) !important;
+    --secondary-color : #7B3F00 !important;
+    --secondary-color-shader : #7b40007e !important;
+    --secondary-color-light : #c89660 !important;
+}

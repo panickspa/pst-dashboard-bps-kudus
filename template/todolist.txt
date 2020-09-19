@@ -1,0 +1,37 @@
+============
+pre-release
+============
+
+feature
+-----------------
+form with validation rule (completed)
+
+animation
+-----------------
+transition (completed)
+
+theme
+-----------------
+ocean-blue
+classic-grey
+brown
+sky-blue
+dark-mode
+
+extras
+----------------
+float menu
+draggable menu
+
+navigation
+----------------
+sidebar (completed)
+navbar top
+navbar bottom
+
+===================
+next version v1.00
+===================
+input component
+core component (card, grid layout, etc)
+pwa ready
