@@ -66,7 +66,7 @@
             showMenu: {
                 type: Boolean,
                 default: false
-            }
+            },
         }
     }
 </script>

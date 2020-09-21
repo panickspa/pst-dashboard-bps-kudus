@@ -36,13 +36,13 @@
 
 .navy-blue *{
     color: white;
-    --primary-background: black;
+    --primary-background: rgb(0, 28, 49);
     --font-default: white;
-    --primary-color : rgb(0, 39, 71);
-    --primary-color-light : rgb(0, 12, 68);
-    --secondary-color : rgb(0, 105, 226);
-    --secondary-color-light : rgb(96, 158, 230);
-    --secondary-color-shader : rgba(96, 158, 230, 0.472);
+    --primary-color : rgb(0, 84, 153);
+    --primary-color-light : rgb(0, 94, 218);
+    --secondary-color : rgb(49, 145, 255);
+    --secondary-color-light : rgb(150, 199, 255);
+    --secondary-color-shader : rgba(180, 215, 255, 0.472);
 }
 
 .brown *{
@@ -58,7 +58,7 @@
 
 .ocean-blue *{
     color: black;
-    --primary-background: white;
+    --primary-background: rgb(243, 252, 255);
     --font-default : black;
     --primary-color : rgb(210, 246, 255);
     --primary-color-light : rgb(246, 251, 251);
@@ -69,10 +69,10 @@
 
 .cream *{
     --font-default : black;
-    --primary-background: #fdf4e8;
-    --primary-color : #fdebd6 !important;
-    --primary-color-light :rgb(253, 244, 235) !important;
-    --secondary-color : #7B3F00 !important;
-    --secondary-color-shader : #7b40007e !important;
-    --secondary-color-light : #c89660 !important;
+    --primary-background: #fdfaf3;
+    --primary-color : #fae8d1;
+    --primary-color-light :rgb(255, 242, 228);
+    --secondary-color : #7B3F00;
+    --secondary-color-shader : #7b40007e;
+    --secondary-color-light : #c89660;
 }

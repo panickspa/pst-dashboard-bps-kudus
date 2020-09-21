@@ -40,14 +40,9 @@ core component
 ----------------
 card (completed)
 
-
 icon design
 -------------
-most used icon
-
-home
----------------
-sample dashboard
+svg sprite integration
 
 ===================
 next version v1.00

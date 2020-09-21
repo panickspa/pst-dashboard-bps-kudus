@@ -1,5 +1,13 @@
 <template>
-  <div id="app" class="classic-grey" @mousemove="mousemoveEvt">
+  <div id="app" v-bind:class="{
+    'classic-grey': $store.state.theme == 'classic-grey',
+    'dark': $store.state.theme == 'dark',
+    'navy-blue': $store.state.theme == 'navy-blue',
+    'brown': $store.state.theme == 'brown',
+    'cream': $store.state.theme == 'cream',
+    'ocean-blue': $store.state.theme == 'ocean-blue',
+  }" @mousemove="mousemoveEvt">
+    <svg-sprite></svg-sprite>
     <navigation-responsive-nav
       :menuList="menuList" 
       :showMenu="showMenuBar" 
@@ -12,8 +20,8 @@
         <router-view></router-view>
       </transition>
     </main-window>
-    <menu-float :menu="floatMenu">
-      <div :slot="f.name" class="h-100" v-for="f in floatMenu" :key="`floatmenu-${f.name}`">
+    <menu-float :menu="floatMenu" class="chat-hide">
+      <div :slot="f.name" class="h-100 chat-hide" v-for="f in floatMenu" :key="`floatmenu-${f.name}`">
         <div class="flex-row">
           <div class="flex-col w-100 chat-wrapper">
             <div :key="`${f.name}-${c.id}`" v-for="c in f.chatHistory" v-bind:class="{
@@ -23,14 +31,15 @@
               <core-card class="chat-content flex-col" :footer="true" :border="false">
                 <div slot="content" class="chat-text" v-text="c.message">
                 </div>
-                <div slot="footer" class="flex-row flex-end">
+                <div slot="footer" class="flex-row flex-end chat-footer">
                   <span class="text-small" v-text="chatDateFormat(c.date)+(c.out ? ` - me`: ` - ${c.sender}`)"></span>
                 </div>
               </core-card>
             </div>
           </div>
         </div>
-        <input-text v-model="f.data" name="input-chat"></input-text>
+        <!-- <input-text v-model="f.data" name="input-chat"></input-text> -->
+        <input-textarea v-model="f.data" name="input-chat" :rows="1" placeholder="Shift+Enter to send"></input-textarea>
         <!-- test -->
       </div>
       <h1 slot="notification">notif</h1>
@@ -54,7 +63,7 @@ export default {
       // console.log(date)
       let now = new Date(), hour = date.getHours(), minutes = date.getMinutes();
       let diff =  Math.round((now - date) / (1000 * 60 * 60 * 24))
-      console.log(`${diff > 2 ? `${diff} days ago - ` : diff == 1 ? 'Yesterday - ' : ''}${hour > 9 ? hour : `0${hour}`}:${minutes}` )
+      // console.log(`${diff > 2 ? `${diff} days ago - ` : diff == 1 ? 'Yesterday - ' : ''}${hour > 9 ? hour : `0${hour}`}:${minutes}` )
       return `${diff > 2 ? `${diff} days ago - ` : diff == 1 ? 'Yesterday - ' : 'Today - '}${hour > 9 ? hour : `0${hour}`}:${minutes > 9 ? minutes : `0${minutes}`}` 
     }
   },
@@ -595,7 +604,7 @@ a.link:hover:visited::before{
 .chat::before{
   content: " ";
   width: 10px;
-  background-color: white;
+  background-color:  var(--primary-background);
   clip-path: polygon(100% 75%, 0% 100%, 100% 100%);
   z-index: 1;
 }
@@ -606,7 +615,7 @@ a.link:hover:visited::before{
   content: " ";
   width: 10px;
   height: .6em;
-  background-color: white;
+  background-color: var(--primary-background);
   clip-path: polygon(0% 0%, 0% 100%, 100% 100%);
   z-index: 1;
 }
@@ -616,6 +625,14 @@ a.link:hover:visited::before{
    white-space: -pre-wrap;     /* Opera <7 */   
    white-space: -o-pre-wrap;   /* Opera 7 */    
    word-wrap: break-word;      /* IE */
+}
+.chat-footer{
+  margin-top: 4px;
+}
+@media screen and (max-width: 800){
+  .chat-hide{
+    display: none;
+  }
 }
 @media screen and (max-width: 500px) {
   .chat-content{

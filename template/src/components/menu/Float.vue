@@ -50,7 +50,7 @@
                 top: `calc(100% - 2em - 10px)`,
                 right: `8px`,
                 mInitCoor: [0,0],
-                hide: false
+                hide: true
             }
         },
     }
