@@ -4,7 +4,7 @@
             <div class="flex-row">
                 <slot name="label"></slot>
             </div>
-            <div class="flex-row  input">
+            <div class="flex-row input">
                 <select :name="name" :id="name" v-bind="$attrs">
                     <option value="" disabled v-if="hint.length > 0" v-text="hint">
                     </option>

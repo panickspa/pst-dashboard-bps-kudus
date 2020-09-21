@@ -8,7 +8,7 @@
         'removeTags=true' + // remove title tags, etc.
         '&removeSVGTagAttrs=true' + // enable removing attributes
         '&removingTagAttrs=fill' + // remove fill attributes
-        '../../node_modules/bootstrap-icons/icons', // search this directory
+        '!@/assets/b-icons', // search this directory
         true, // search subdirectories
         /\w+\.svg$/i // only include SVG files
     )

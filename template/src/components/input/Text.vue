@@ -27,22 +27,22 @@
                 </div>
             </div>
             <div class="flex-col valid-icon" v-if="required">
-                <span v-if="!validationRule(
+                <svg-icon v-if="!validationRule(
                     {
                         text: value,
                         min: min,
                         regexp: ( regexp ? regexp : undefined),
                         required: required
                     }
-                ) && required" class="icon-x-circle red"></span>
-                <span v-else-if="validationRule(
+                ) && required" icon="x-circle" class="red"></svg-icon>
+                <svg-icon v-else-if="validationRule(
                     {
                         text: value,
                         min: min,
                         regexp: ( regexp ? regexp : undefined),
                         required: required
                     }
-                ) && required" class="icon-check-circle green"></span>
+                ) && required" icon="check-circle" class="green"></svg-icon>
                 <div v-else class="blank"></div>
             </div>
         </div>

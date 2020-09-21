@@ -73,27 +73,27 @@ export default {
         {
           name: "Home",
           to: "/",
-          icon: "icon-house-door-fill"
+          icon: "house-door-fill"
         },
         {
           name: "Modal",
           to: "/modal",
-          icon: 'icon-window'
+          icon: 'window'
         },
         {
           name: "Form",
-          icon: "icon-list",
+          icon: "list",
           to: "/form"
         },
         {
           name: "Input",
-          icon: "icon-input-cursor",
+          icon: "input-cursor",
           to: "/input"
         },
         {
           name: "About",
           to: "/about",
-          icon: "icon-info-circle"
+          icon: "info-circle"
         },
       ],
       showMenuBar: false,
@@ -294,14 +294,17 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus
   transition: all 1s;
 }
 
-.checkbox input[type="checkbox"]:checked + label::after{
-  font-family: 'icomoon';
-  content: "\ea57";
-  background: var(--secondary-color-light);
-  border: 1px solid var(--secondary-color);
-  color:#fff;
-  transition: all 1s;
-}
+// .checkbox input[type="checkbox"]:checked + label::after{
+//   // font-family: 'icomoon';
+//   // content: "\ea57";
+//   background-image: url('./assets/b-icons/check.svg');
+//   // background: var(--secondary-color-light);
+//   border: 1px solid var(--secondary-color);
+//   color:#fff;
+//   fill:#fff;
+//   transition: all 1s;
+//   z-index: 1;
+// }
 
 .checkbox label{
   display: block;
@@ -311,30 +314,45 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus
   text-align: left;
 }
 
-.checkbox label::before {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  top: 0;
-  left: 0;
-  background: var(--primary-color-light);
-  border: 1px solid var(--primary-color);
-  transition: all 1s;
-}
+// .checkbox label::before {
+//   content: "";
+//   display: block;
+//   position: absolute;
+//   width: 20px;
+//   height: 20px;
+//   top: 0;
+//   left: 0;
+//   // background-image: url('./assets/b-icons/check.svg');
+//   // background: var(--primary-color-light);
+//   border: 1px solid var(--primary-color);
+//   transition: all 1s;
+// }
 
-.checkbox label::after{
-  display: block;
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  top: 0;
-  left: 0;
-  font-size: 18px;
-  line-height: 20px;
-  text-align: center;
-}
+// .checkbox input[type="checkbox"]:checked ~ label::before {
+//   content: "";
+//   display: block;
+//   position: absolute;
+//   width: 20px;
+//   height: 20px;
+//   top: 0;
+//   left: 0;
+//   // background-image: url('./assets/b-icons/check.svg');
+//   // background: var(--primary-color-light);
+//   border: 1px solid var(--primary-color);
+//   transition: all 1s;
+// }
+
+// .checkbox label::after{
+//   display: block;
+//   position: absolute;
+//   width: 20px;
+//   height: 20px;
+//   top: 0;
+//   left: 0;
+//   font-size: 18px;
+//   line-height: 20px;
+//   text-align: center;
+// }
 
 input[type="checkbox"],
 input[type="checkbox" i]{
@@ -343,6 +361,16 @@ input[type="checkbox" i]{
   position: absolute;
   cursor: pointer;
   transition: all 1s;
+}
+
+.box-checkbox{
+  border: 1px solid var(--secondary-color);
+  width: 1em;
+  height: 1em;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .radio input[type="radio"]:checked + label:after{
@@ -411,11 +439,13 @@ input[type="radio" i]{
 }
 
 .red{
-  color: var(--red);
+  color: var(--red) !important;
+  fill: var(--red) !important;
 }
 
 .green{
-  color: var(--green);
+  color: var(--green) !important;
+  fill: var(--green) !important;
 }
 
 .card{

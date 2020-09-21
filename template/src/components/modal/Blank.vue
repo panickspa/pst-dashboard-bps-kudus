@@ -8,7 +8,9 @@
                         <div class="toolbar w-100">
                             <div class="flex-row flex-center">
                                 <div class="flex-col flex-center toolbar-icon">
-                                    <i :class="`${icon} icon-modal icon`" v-if="icon ? icon.length > 0 : false"></i>
+                                    <span class="icon-modal icon" v-if="icon ? icon.length > 0 : false">
+                                        <svg-icon :icon="icon"></svg-icon>
+                                    </span>
                                 </div>
                                 <div class="flex-col flex-center toolbar-header">
                                     <slot name="header"></slot>

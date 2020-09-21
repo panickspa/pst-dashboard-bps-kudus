@@ -8,7 +8,9 @@
                             <div class="flex-row">
                                 <div class="flex-col">
                                     <div class="flex-row flex-center">
-                                        <span :class="`${icon} icon header-text`"></span>
+                                        <span :class="`icon header-text`">
+                                            <svg-icon :icon="icon"></svg-icon>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -20,7 +22,7 @@
                                 class="menu-item" 
                                 v-on:click="$emit(`menuClicked`, false)">
                                 <div class="vertical-line">    
-                                    <span :class="`${menu.icon} menu-icon icon`"></span><span class="m-none">{{menu.name}}</span>
+                                    <span :class="`menu-icon icon`"><svg-icon :icon="menu.icon"></svg-icon></span><span class="m-none">{{menu.name}}</span>
                                 </div>
                             </router-link>
                         </div>
@@ -45,7 +47,7 @@
             menuList: Array,
             'icon': {
                 type: String, 
-                default:"icon-app"
+                default: "app-box"
             },
             'footer': {
                 type: String,

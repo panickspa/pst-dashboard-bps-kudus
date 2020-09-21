@@ -34,6 +34,9 @@
                                     <div class="label-checkbox" v-text="inp.name"></div>
                                     <div class="checkbox-grid">
                                         <div class="checkbox" v-for="box in inp.checkboxes" v-bind:key="box.name">
+                                            <div class="box-checkbox">
+                                                <svg-icon icon="check" color="var(--secondary-color)" v-if="box.checked"></svg-icon>
+                                            </div>
                                             <input :type="`checkbox`" :id="box.name" :value="box.value" v-model="box.checked" @change="inp.valid = validCheckboxes(inp.checkboxes)">
                                             <label :for="box.name" v-text="box.label"></label>
                                         </div>
@@ -61,29 +64,29 @@
                                                 :min="inp.min"
                                                 @click="inp.type = (inp.type == `password-hide` ? `password-show` : `password-hide`)"
                                             >
-                                                <span v-bind:class="{
-                                                    'icon-eye-fill': inp.type == `password-hide`,
-                                                    'icon-eye-slash-fill': inp.type == `password-show`
-                                                }" ></span>
+                                                <svg-icon v-bind:class="{
+                                                    'eye-fill': inp.type == `password-hide`,
+                                                    'eye-slash-fill': inp.type == `password-show`
+                                                }" ></svg-icon>
                                             </div>
                                         </div>
                                         <div class="flex-col valid-icon">
-                                            <span v-if="!validationRule(
+                                            <svg-icon v-if="!validationRule(
                                                 {
                                                     text: inp.data,
                                                     min: inp.min,
                                                     regexp: inp.regexp,
                                                     required: inp.required
                                                 }
-                                            ) && inp.required" class="icon-x-circle red"></span>
-                                            <span v-else-if="validationRule(
+                                            ) && inp.required" icon="x-circle" class="red"></svg-icon>
+                                            <svg-icon v-else-if="validationRule(
                                                 {
                                                     text: inp.data,
                                                     min: inp.min,
                                                     regexp: inp.regexp,
                                                     required: inp.required
                                                 }
-                                            ) && inp.required" class="icon-check-circle green"></span>
+                                            ) && inp.required" icon="check-circle" class="green"></svg-icon>
                                             <div v-else class="blank"></div>
                                         </div>
                                     </div>

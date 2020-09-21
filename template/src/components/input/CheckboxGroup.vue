@@ -18,7 +18,6 @@
 
 <script>
     import { validCheckboxes } from "../../module/validation.js"
-    // import { checkboxArr } from "../../module/arrayMod"
     export default {
         inheritAttrs: false,
         model:{
