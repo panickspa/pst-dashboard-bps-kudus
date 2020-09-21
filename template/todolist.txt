@@ -20,18 +20,40 @@ dark-mode
 
 extras
 ----------------
-float menu
-draggable menu
+float menu (completed)
 
 navigation
 ----------------
 sidebar (completed)
-navbar top
-navbar bottom
+navbar top (completed)
+
+input component
+-----------------
+single checkbox (completed)
+checkbox group (completed)
+radio group (completed)
+password (completed)
+text (completed)
+select (completed)
+
+core component
+----------------
+card (completed)
+
+
+icon design
+-------------
+most used icon
+
+home
+---------------
+sample dashboard
 
 ===================
 next version v1.00
 ===================
-input component
-core component (card, grid layout, etc)
+grid
+layout
 pwa ready
+draggable menu
+navbar bottom

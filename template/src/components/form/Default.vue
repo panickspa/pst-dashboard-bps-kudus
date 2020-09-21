@@ -20,10 +20,12 @@
                                 </div>
                                 <div class="flex-row flex-center input" v-if="inp.type == `select`">
                                     <select :name="inp.name" v-model="inp.data">
+                                        <option v-if="inp.hint ? inp.hint : ``" v-text="inp.hint" value="" disabled>
+                                        </option>
                                         <option 
                                             :value="opt.value" 
                                             v-for="opt in inp.option" 
-                                            v-bind:key="opt.value">
+                                            v-bind:key="`${inp.name}-${opt.value}`">
                                                 {{opt.name}}
                                         </option>
                                     </select>
@@ -171,62 +173,5 @@
     padding-top: 0.8em;
     padding-right: 0.8em;
     padding-left: 0.8em;
-}
-.password-toggle, .password-toggle>span{
-    cursor: pointer;
-}
-.password-toggle{
-    // margin-right: 5px;
-    // border-style: solid;
-    // border-width: 1px;
-    border-left-style: none;
-}
-.valid-icon{
-    margin-left: 4px;
-}
-
-.header, .list-input{
-    padding: 10px;
-    // max-width: 500px;
-}
-.requirement{
-    margin-left: 2px;
-    font-size: 9px;
-    align-self: flex-end;
-    margin-bottom: 2px;
-    // justify-self: flex-end;
-}
-.blank{
-    width: 16px;
-}
-.list-input{
-    margin-bottom: 1em;
-}
-.input-item{
-    margin-bottom: 0.5em;
-}
-.checkbox-grid{
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    // grid-auto-flow: row;
-    // grid-auto-columns: 300px;
-}
-// .checkbox>flex-row{
-//     max-width: 200px;
-// }
-.label-checkbox{
-    margin-bottom: 10px;
-}
-.action{
-    justify-content: flex-end;
-    background: var(--primary-color-light);
-    padding: 10px 20px 20px 20px;
-}
-.warn{
-    min-height: 1.2em;
-    margin-bottom: 10px;
-}
-.warn-red *{
-    color: var(--red);
 }
 </style>

@@ -5,11 +5,11 @@
                 <div class="flex-col w-100">
                     <h1 v-text="$route.name"></h1>
                 </div>
-                <div class="flex-col flex-center" id="menu-toggle">
+                <!-- <div class="flex-col flex-center" id="menu-toggle">
                     <div class="icon-toggle" v-on:click="$emit(`showMenu`, true)">
                         <span class="icon-three-dots-vertical"></span>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
         <div class="content">
@@ -60,9 +60,19 @@
     margin-right: 15px;
     position: relative;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1080px) {
     .main{
-        margin-left: 0;
+        margin-left: 50px;
+        transition: all 200ms ease-in-out;
+    }
+    #menu-toggle{
+        display: flex;
+    }
+}
+@media screen and (max-width: 500px) {
+    .main{
+        margin-left: 0px;
+        margin-top: 38px;
         transition: all 200ms ease-in-out;
     }
     #menu-toggle{

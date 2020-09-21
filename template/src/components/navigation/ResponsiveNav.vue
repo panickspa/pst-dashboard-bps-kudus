@@ -1,22 +1,12 @@
 <template>
-    <div class="content" v-bind:class="{
-        'show-menu': showMenu,
-        'hide-menu': !showMenu
-    }">
-        <div class="flex-row h-100">
-            <div class="wrapper h-100">
-                <div class="sidebar h-100">
-                    <div class="menu flex-col h-100">
+    <div class="content">
+        <div class="flex-row">
+            <div class="wrapper">
+                <div class="sidebar">
+                    <div class="menu flex-row">
                         <div class="header">
                             <div class="flex-row">
-                                <div class="flex-col flex-center col-1">
-                                    <!-- <div class="flex-row" id="toggle-menu-close">
-                                        <div class="icon-toggle" v-on:click="$emit(`hideMenu`,false)">
-                                            <span class="icon-three-dots-vertical"></span>
-                                        </div>
-                                    </div> -->
-                                </div>
-                                <div class="flex-col col-2">
+                                <div class="flex-col">
                                     <div class="flex-row flex-center">
                                         <span :class="`${icon} icon header-text`"></span>
                                     </div>
@@ -30,12 +20,12 @@
                                 class="menu-item" 
                                 v-on:click="$emit(`menuClicked`, false)">
                                 <div class="vertical-line">    
-                                    <span :class="`${menu.icon} menu-icon icon`"></span>{{menu.name}}
+                                    <span :class="`${menu.icon} menu-icon icon`"></span><span class="m-none">{{menu.name}}</span>
                                 </div>
                             </router-link>
                         </div>
                     </div>
-                    <div class="footer">
+                    <div class="footer m-none">
                         <div class="wrapper flex-row h-100">
                             <div class="footer-item">
                                 {{footer}}
@@ -43,8 +33,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="empty-shade" v-on:click="$emit(`hideMenu`,false)">
             </div>
         </div>
     </div>
@@ -73,15 +61,6 @@
 
 <style lang="scss" scoped>
 @import "../color.scss";
-#toggle-menu-close{
-    cursor: pointer;
-    display: none;
-}
-.empty-shade{
-    display: none;
-    background: var(--secondary-color-shader);
-    width: 100%;
-}
 .content{
     height: 100vh;
     width: 250px;
@@ -90,6 +69,9 @@
     transition: all 200ms ease-in-out;
     z-index: 5;
     /* background-color: white; */
+}
+.content>div, content>div>div{
+    height: 100%;
 }
 .sidebar{
     display: flex;
@@ -102,8 +84,12 @@
 }
 .footer{
     flex-grow: 1;
+    justify-content: flex-end;
 }
 .footer-item{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-left: 10px;
@@ -124,9 +110,10 @@
     align-items: center;
 }
 .menu{
-    flex-grow: 2;
+    flex-grow: 4;
     display: block;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     /* border-bottom-style: solid;
     border-bottom-width: 1px;
     border-bottom-color: rgb(221, 221, 221); */
@@ -173,23 +160,55 @@ a.router-link-exact-active>.vertical-line{
     transition: background-color 200ms ease-in-out;
 }
 
-@media screen and (max-width: 800px) {
-    #toggle-menu-close{
-        display: flex;
-    }
-    .empty-shade{
-        display: inherit;
+@media screen and (max-width: 1080px) {
+    .m-none{
+        display: none;
     }
     .content{
         width: 100%;
+        height: 100vh;
     }
-    .hide-menu{
-        clip-path: inset(0px 100% 0px 0px);
-        transition: all 200ms ease-in-out;
+    .content ,.content>div, content>div>div, .sidebar{
+        width: 50px;
     }
-    .show-menu{
-        clip-path: inset(0px 0% 0px 0px);
-        transition: all 200ms ease-in-out;
+}
+
+@media screen and (max-width: 500px) {
+    .m-none{
+        display: none;
+    }
+    .content{
+        width: 100vw;
+        transform: translateY(-38px);
+    }
+    .content ,.content>div, content>div>div{
+        height: 38px;
+    }
+    .sidebar{
+        bottom: 100%;
+        width: 100vw;
+        height: 38px;
+        overflow-y: hidden;
+        overflow-x: auto;
+    }
+    .menu{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .header{
+        display: none;
+    }
+    .header-text{
+        margin: 0%;
+        margin-right: 10px;
+        margin-top: 2px;
+    }
+    .menu-item{
+        width: 3em;
+    }
+    .list{
+        flex-direction: row;
     }
 }
 

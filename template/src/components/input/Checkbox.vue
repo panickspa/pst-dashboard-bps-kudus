@@ -5,8 +5,10 @@
             v-bind="$attrs"
             v-bind:checked="checked"
             v-on:input="$emit('change', $event.target.checked)"
-            v-if="typeof checked == 'boolean'">
-        <label v-if="(label ? label.length > 0 : false)" for="shader" v-text="label">Turn on background shader</label>
+            :name="name"
+            :id="name"
+            >
+        <label v-if="(label ? label.length > 0 : false)" :for="name" v-text="label">Turn on background shader</label>
     </div>
 </template>
 
@@ -24,6 +26,9 @@
             label:{
                 type: String,
                 default: ""
+            },
+            name:{
+                type:String
             }
         },
         methods: {

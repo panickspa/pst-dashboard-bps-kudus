@@ -1,5 +1,5 @@
 <template>
-    <div class="flex-col" :style="`--grid-number : ${gridCol};`">
+    <div class="flex-col wrapper" :style="`--grid-number : ${gridCol};`">
         <slot name="title"></slot>
         <div class="grid">
             <div class="checkbox" v-for="c in checkboxes.length" :key="`${name}-${checkboxes[c-1].name}`">
@@ -9,7 +9,7 @@
                     :id="`${name}-${checkboxes[c-1].name}`" 
                     v-model="checkedBoxes"
                     :value="checkboxes[c-1].value"
-                    @change="valid({e: checkboxes, f: checkboxes[c-1]})">
+                    @change="valid(checkboxes)">
                 <label :for="`${name}-${checkboxes[c-1].name}`" v-text="checkboxes[c-1].label"></label>
             </div>
         </div>
@@ -47,13 +47,7 @@
         },
         methods: {
             valid(e){
-                // console.log(e)
-                this.validity = validCheckboxes(e.e) 
-                // console.log(this.validity)
-                // this.checkedBoxes = checkboxArr({
-                //   arr: this.checkedBoxes,
-                //   elm: e.f.name  
-                // })
+                this.validity = validCheckboxes(e)
                 this.$emit('changed', this.checkedBoxes)
                 this.$emit('valid', this.validity)
             }
@@ -67,18 +61,19 @@
                 checkedBoxes: []
             }
         },
-        // watch: {
-        //     checkedBoxes: () => {
-        //         console.log(this.checkedBoxes)
-        //         this.$emit('changed', this.checkedBoxes)
-        //     }
-        // },
     }
 </script>
 
 <style lang="scss" scoped>
+
 .grid{
     display: grid;
     grid-template-columns: repeat(var(--grid-number), 1fr);
+}
+.checkbox{
+    margin-left: 10px;
+}
+.content{
+    margin-bottom: 8px;
 }
 </style>

@@ -1,5 +1,5 @@
 function validationRule(e){
-    if(e.required) console.log(e)
+    // if(e.required) console.log(e)
     return e.required ? ( // required check
         (
             (e.min ? e.min-1 : 0)  < e.text.length) ? ( //minimum char check
