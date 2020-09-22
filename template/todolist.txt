@@ -12,11 +12,15 @@ transition (completed)
 
 theme
 -----------------
-ocean-blue
-classic-grey
-brown
-sky-blue
-dark-mode
+ocean-blue (completed)
+classic-grey (completed)
+brown (completed)
+sky-blue (completed)
+dark-mode (completed)
+
+font-size
+--------------
+responsive font size
 
 extras
 ----------------

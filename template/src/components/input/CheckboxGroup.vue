@@ -3,13 +3,21 @@
         <slot name="title"></slot>
         <div class="grid">
             <div class="checkbox" v-for="c in checkboxes.length" :key="`${name}-${checkboxes[c-1].name}`">
-                <input 
+                <input
+                    :ref="`${name}-${c.name}`"
                     type="checkbox" 
                     :name="`${name}-${checkboxes[c-1].name}`" 
                     :id="`${name}-${checkboxes[c-1].name}`" 
                     v-model="checkedBoxes"
                     :value="checkboxes[c-1].value"
                     @change="valid(checkboxes)">
+                <div class="box-checkbox">
+                    <svg-icon 
+                        class="check"
+                        icon="check"
+                        color="var(--secondary-color)"
+                    ></svg-icon>
+                </div>
                 <label :for="`${name}-${checkboxes[c-1].name}`" v-text="checkboxes[c-1].label"></label>
             </div>
         </div>
@@ -45,10 +53,15 @@
             }
         },
         methods: {
+            isChecked(e){
+                let ref = this.$refs[e]
+                if(ref) return ref.selected 
+                else return false
+            },
             valid(e){
                 this.validity = validCheckboxes(e)
+                console.log(this.validity)
                 this.$emit('changed', this.checkedBoxes)
-                this.$emit('valid', this.validity)
             }
         },
         created() {
@@ -57,7 +70,7 @@
         data() {
             return {
                 validity: false,
-                checkedBoxes: []
+                checkedBoxes: [],
             }
         },
     }
@@ -74,5 +87,14 @@
 }
 .content{
     margin-bottom: 8px;
+}
+input+.box-checkbox .check{
+    opacity: 0%;
+    display: none;
+    transition: opacity 0.2s ease-in-out;
+}
+input:checked+.box-checkbox .check{
+    opacity: 100%;
+    display: inline;
 }
 </style>

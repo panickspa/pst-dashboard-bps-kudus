@@ -140,5 +140,6 @@
         background-color: none;
         padding: 6px;
         overflow: hidden;
+        background: none;
     }
 </style>

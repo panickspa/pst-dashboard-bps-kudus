@@ -21,9 +21,8 @@
                                 :key="menu.name" 
                                 class="menu-item" 
                                 v-on:click="$emit(`menuClicked`, false)">
-                                <div class="vertical-line">    
-                                    <span :class="`menu-icon icon`"><svg-icon :icon="menu.icon"></svg-icon></span><span class="m-none">{{menu.name}}</span>
-                                </div>
+                                <!-- <div class="vertical-line"></div> -->
+                                <span :class="`menu-icon icon`"><svg-icon :icon="menu.icon"></svg-icon></span><span class="m-none">{{menu.name}}</span>
                             </router-link>
                         </div>
                     </div>
@@ -82,6 +81,7 @@
     height: 100%;
     flex: none;
     background-color: var(--primary-color);
+    transition: all 0.2s ease-in-out;
     /* padding-left: 10px; */
 }
 .footer{
@@ -121,16 +121,16 @@
     border-bottom-color: rgb(221, 221, 221); */
 }
 .menu-item{
-    padding: 0px;
+    padding-top: 8px;
+    padding-bottom: 8px;
     text-decoration: none;
     background-color: var(--primary-color);
     color: var(--font-default);
-    transition: background 200ms ease-in-out, color 200ms ease-in-out;
+    transition: border .1s ease-in-out;
 }
 .menu-item:hover{
     color: var(--font-default);
     background: var(--primary-color-light);
-    transition: background 200ms ease-in-out, color 200ms ease-in-out;
 }
 .menu-icon{
     margin-right: 30px;
@@ -146,20 +146,22 @@
     color: var(--font-default);
 }
 
-a>.vertical-line{
-    display: flex;
-    align-items: center;
-    height: 2.4em;
-    width: 4px;
-    background-color: none;
-    transition: background-color 200ms ease-in-out;
-}
+// .menu-item::before{
+//     content: "";
+//     height: calc(var(--fsize) * 2);
+//     width: 4px;
+//     transform: translateY(-8px);
+//     position: absolute;
+//     background-color: none;
+//     transition: background-color 200ms ease-in-out;
+// }
 
-a.router-link-exact-active>.vertical-line{
-    display: flex;
-    align-items: center;
-    background-color: var(--secondary-color);
-    transition: background-color 200ms ease-in-out;
+.menu-item.router-link-exact-active{
+    border-left: 4px solid var(--secondary-color);
+}
+.menu-item.router-link-exact-active .menu-icon{
+    margin-right: 30px;
+    margin-left: 11px;
 }
 
 @media screen and (max-width: 1080px) {
@@ -171,7 +173,7 @@ a.router-link-exact-active>.vertical-line{
         height: 100vh;
     }
     .content ,.content>div, content>div>div, .sidebar{
-        width: 50px;
+        width: calc(var(--fsize) + 35px);
     }
 }
 
@@ -184,17 +186,20 @@ a.router-link-exact-active>.vertical-line{
         transform: translateY(-38px);
     }
     .content ,.content>div, content>div>div{
-        height: 38px;
+        height: calc(var(--fsize) + 20px);
+        width: 100vw;
     }
     .sidebar{
         bottom: 100%;
         width: 100vw;
-        height: 38px;
+        height: calc(var(--fsize) * 3);
         overflow-y: hidden;
+    }
+    .list{
         overflow-x: auto;
     }
     .menu{
-        display: flex;
+        display: grid;
         flex-direction: row;
         justify-content: center;
     }
@@ -207,10 +212,25 @@ a.router-link-exact-active>.vertical-line{
         margin-top: 2px;
     }
     .menu-item{
-        width: 3em;
+        // width: calc(var(--fsize) * 3);
+        min-width: calc(var(--fsize) * 3);
+        text-align: center;
+        // align-self: center;
+    }
+    .menu-icon{
+        margin: 0%;
+        width: calc(var(--fsize) * 3);
+        // text-align: center;
+    }
+    .menu-item.router-link-exact-active .menu-icon{
+        margin: 0%;
+        // text-align: center;
     }
     .list{
         flex-direction: row;
+    }
+    a::before{
+        display: none;
     }
 }
 

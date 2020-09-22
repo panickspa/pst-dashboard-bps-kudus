@@ -5,7 +5,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    theme: 'classic-grey'
+    theme: 'classic-grey',
+    fontSize: 13
   },
   strict: false,
   mutations: {

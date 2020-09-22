@@ -6,7 +6,7 @@
     'brown': $store.state.theme == 'brown',
     'cream': $store.state.theme == 'cream',
     'ocean-blue': $store.state.theme == 'ocean-blue',
-  }" @mousemove="mousemoveEvt">
+  }" @mousemove="mousemoveEvt" :style="`--fsize: ${$store.state.fontSize}px;`">
     <svg-sprite></svg-sprite>
     <navigation-responsive-nav
       :menuList="menuList" 
@@ -38,9 +38,12 @@
             </div>
           </div>
         </div>
-        <!-- <input-text v-model="f.data" name="input-chat"></input-text> -->
-        <input-textarea v-model="f.data" name="input-chat" :rows="1" placeholder="Shift+Enter to send"></input-textarea>
-        <!-- test -->
+        <div class="flex-row">
+          <input-textarea v-model="f.data" class="chat-input w-100" :name="`input-chat-${f.name}`" :rows="1" placeholder="Enter your message"></input-textarea>
+          <div class="send-button flex-center">
+            <svg-icon icon="reply-fill" color="var(--secondary-color)"></svg-icon>
+          </div>
+        </div>
       </div>
       <h1 slot="notification">notif</h1>
     </menu-float>
@@ -155,6 +158,9 @@ export default {
 
 <style lang="scss">
 @import "./components/color.scss";
+#app{
+    font-size: var(--fsize);
+}
 html{
   background-color: var(--primary-background-color);
 }
@@ -276,6 +282,42 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus
     background: none;
 }
 
+textarea::placeholder, input::placeholder{
+    color: var(--secondary-color);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator{
+  // background-color: var(--font-default);
+  cursor: pointer;
+  fill: var(--font-default);
+  color: var(--font-default);
+  background: var(--font-default);
+  content: "";
+  padding: 0%;
+  margin: 0%;
+  width: var(--fsize);
+  height: var(--fsize);
+  border-radius: 100%;
+  clip-path: polygon(49% 62%, 76% 36%, 84% 47%, 49% 80%, 16% 46%, 23% 37%);
+}
+input[type=date]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    display: none;
+}
+select>option:disabled{
+  background-color: var(--primary-color) !important;
+  // color: var(--secondary-color-shader);
+}
+
+select>option{
+  background-color: var(--primary-color) !important;
+}
+select>*{
+  border-color: var(--secondary-color);
+  outline: none;
+  border: none;
+}
+
 .checkbox, .radio{
  margin-bottom: 5px;
  display: flex;
@@ -291,7 +333,6 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus
 .radio input,
 .radio label{
   cursor: pointer;
-  transition: all 1s;
 }
 
 // .checkbox input[type="checkbox"]:checked + label::after{
@@ -314,19 +355,19 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus
   text-align: left;
 }
 
-// .checkbox label::before {
-//   content: "";
-//   display: block;
-//   position: absolute;
-//   width: 20px;
-//   height: 20px;
-//   top: 0;
-//   left: 0;
-//   // background-image: url('./assets/b-icons/check.svg');
-//   // background: var(--primary-color-light);
-//   border: 1px solid var(--primary-color);
-//   transition: all 1s;
-// }
+.checkbox label::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 0;
+  left: 0;
+  // background-image: url('./assets/b-icons/check.svg');
+  // background: var(--primary-color-light);
+  // border: 1px solid var(--primary-color);
+  // transition: all 1s;
+}
 
 // .checkbox input[type="checkbox"]:checked ~ label::before {
 //   content: "";
@@ -373,16 +414,16 @@ input[type="checkbox" i]{
   justify-content: center;
 }
 
-.radio input[type="radio"]:checked + label:after{
-  font-family: 'icomoon';
-  content: "\ea75";
-  font-size: 50%;
-  background: var(--secondary-color-light);
-  border: 1px solid var(--secondary-color);
-  border-radius: 100%;
-  color:#fff;
-  transition: all 1s;
-}
+// .radio input[type="radio"]:checked + label:after{
+//   font-family: 'icomoon';
+//   content: "\ea75";
+//   font-size: 50%;
+//   background: var(--secondary-color-light);
+//   border: 1px solid var(--secondary-color);
+//   border-radius: 100%;
+//   color:#fff;
+//   transition: all 1s;
+// }
 
 .radio label{
   display: block;
@@ -390,35 +431,34 @@ input[type="checkbox" i]{
   padding-left: 7px;
   line-height: 20px;
   text-align: left;
-  transition: all 1s;
 }
 
-.radio label:before {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  top: 0;
-  left: 0;
-  background: var(--primary-color-light);
-  border: 1px solid var(--primary-color);
-  border-radius: 100%;
-  transition: all 1s;
-}
+// .radio label:before {
+//   content: "";
+//   display: block;
+//   position: absolute;
+//   width: 20px;
+//   height: 20px;
+//   top: 0;
+//   left: 0;
+//   background: var(--primary-color-light);
+//   border: 1px solid var(--primary-color);
+//   border-radius: 100%;
+//   transition: all 1s;
+// }
 
-.radio label:after{
-  display: block;
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  top: 0;
-  left: 0;
-  font-size: 18px;
-  line-height: 20px;
-  text-align: center;
-  transition: all 1s;
-}
+// .radio label:after{
+//   display: block;
+//   position: absolute;
+//   width: 20px;
+//   height: 20px;
+//   top: 0;
+//   left: 0;
+//   font-size: 18px;
+//   line-height: 20px;
+//   text-align: center;
+//   transition: all 1s;
+// }
 
 input[type="radio"],
 input[type="radio" i]{
@@ -436,6 +476,36 @@ input[type="radio" i]{
 
 .input:focus-within{
     box-shadow: 0px 0px 3px var(--secondary-color-light);
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 25px;
+  background: var(--primary-color-light);
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: var(--secondary-color);
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: var(--secondary-color);
+  cursor: pointer;
 }
 
 .red{
@@ -506,20 +576,12 @@ input[type="radio" i]{
 }
 
 .fade-enter-active, .fade-leave-active {
-  transition: opacity 3s;
+  transition: opacity 0.1s;
   position: absolute;
-  top: auto;
-  bottom: auto;
-  left: auto;
-  right: auto;
 }
 .fade-enter, .fade-leave-to {
   opacity: 0;
   position: absolute;
-  top: auto;
-  bottom: auto;
-  left: auto;
-  right: auto;
 }
 .relative{
   position: relative;
@@ -538,7 +600,7 @@ a.link:visited{
 a.link:hover::before{
     width: 2em;
     transition: all 200ms;
-    border-bottom: 2px solid var(--primary-color);
+    border-bottom: 2px solid var(--secondary-color-light);
 }
 a.link::before{
     content: "";
@@ -555,7 +617,7 @@ a.link:visited::before{
     border-bottom: 2px solid var(--secondary-color);
 }
 a.link:hover:visited::before{
-    border-bottom: 2px solid var(--primary-color);
+    border-bottom: 2px solid var(--secondary-color-light);
 }
 
 // form rule
@@ -574,7 +636,7 @@ a.link:hover:visited::before{
 }
 .requirement{
     margin-left: 2px;
-    font-size: 9px;
+    font-size: .6em;
     align-self: flex-end;
     margin-bottom: 2px;
 }
@@ -602,7 +664,6 @@ a.link:hover:visited::before{
     background: var(--primary-color-light);
     padding: 10px 20px 20px 20px;
 }
-
 .warn{
     min-height: 1.2em;
     margin-bottom: 10px;
@@ -611,7 +672,6 @@ a.link:hover:visited::before{
 .warn-red *{
     color: var(--red);
 }
-
 .chat{
   margin-bottom: 4px;
   margin-top: 4px;
@@ -659,7 +719,53 @@ a.link:hover:visited::before{
 .chat-footer{
   margin-top: 4px;
 }
-@media screen and (max-width: 800){
+.chat-input{
+  max-height: 80px;
+  overflow-y: auto;
+}
+.send-button{
+  width: 1.5em;
+  align-self: center;
+  text-align: center;
+  height: 100%;
+  padding: 10px 5px 10px 5px;
+  background-color: var(--primary-color-light);
+  cursor: pointer;
+}
+.send-button:hover{
+  background-color: var(--secondary-color);
+}
+.send-button:hover svg{
+  fill: var(--primary-color);
+}
+
+::-webkit-scrollbar {
+  max-width: 4px;
+  max-height: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: none;
+}
+
+::-webkit-scrollbar-track:hover {
+  opacity: 100%;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  opacity: 0%;
+  background: var(--secondary-color-shader); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-color);
+  opacity: 100%;
+}
+
+@media screen and (max-width: 800px){
   .chat-hide{
     display: none;
   }
@@ -667,6 +773,9 @@ a.link:hover:visited::before{
 @media screen and (max-width: 500px) {
   .chat-content{
      max-width: 84px;
+  }
+  .chat-hide{
+    display: none;
   }
 }
 </style>

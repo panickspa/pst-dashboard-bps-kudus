@@ -54,6 +54,10 @@
                     <h4 slot="label"
                     class="mb">Example of Select</h4>
                 </input-select>
+                <div class="flex-col input-item">
+                    <h4 class="mb">Example of Textarea</h4>
+                    <input-textarea name="example-text-area" v-model="textarea" placeholder="Type something ..."></input-textarea>
+                </div>
             </div>
         </div>
     </div>
@@ -90,7 +94,7 @@
                     selected: "rock"
                 },
                 group:{
-                    name: 'Example Checkboxes Group',
+                    name: 'Example-Checkboxes-Group',
                     checkboxes:[
                         {
                             value: 'banana',
@@ -127,7 +131,8 @@
                             name: 'Google'
                         }
                     ]
-                }
+                },
+                textarea: ''
             }
         },
     }

@@ -18,7 +18,7 @@
             },
             color: {
                 type: String,
-                default: 'black'
+                default: 'var(--font-default)'
             }
         },
     }
@@ -28,7 +28,6 @@
 svg.icon {
   fill: var(--fill-icon);
   height: 1em;
-  margin-bottom: 0.125em;
   vertical-align: middle;
   width: 1em;
 }

@@ -16,8 +16,9 @@
                                     <slot name="header"></slot>
                                 </div>
                                 <div class="flex-col flex-center toolbar-action h-100">
-                                    <span class="icon icon-x close" v-on:click="hide(`btn-close`)" v-if="closeBtn"></span>
-                                    <!-- <div class="btn minimize"></div> -->
+                                    <span class="icon i-x close" v-on:click="hide(`btn-close`)" v-if="closeBtn">
+                                        <svg-icon :icon="'x'"></svg-icon>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -140,11 +141,14 @@
  font-size: 1.2em;
  padding: 5px;
 }
-.icon-x{
+.i-x{
     height: 100%;
     transition: color 250ms ease-in-out, background-color 250ms ease-in-out;
 }
-.icon-x:hover{
+.i-x:hover svg{
+    fill: white;
+}
+.i-x:hover{
     background-color: var(--red);
     color: white;
     transition: color 250ms ease-in-out, background-color 250ms ease-in-out;

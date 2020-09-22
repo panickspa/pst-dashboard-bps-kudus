@@ -64,10 +64,8 @@
                                                 :min="inp.min"
                                                 @click="inp.type = (inp.type == `password-hide` ? `password-show` : `password-hide`)"
                                             >
-                                                <svg-icon v-bind:class="{
-                                                    'eye-fill': inp.type == `password-hide`,
-                                                    'eye-slash-fill': inp.type == `password-show`
-                                                }" ></svg-icon>
+                                                <svg-icon icon="eye-fill" :key="inp.name+'-show'" v-if="inp.type == `password-hide`"></svg-icon>
+                                                <svg-icon icon="eye-slash-fill" :key="inp.name+'-hide'" v-if="inp.type == `password-show`"></svg-icon>
                                             </div>
                                         </div>
                                         <div class="flex-col valid-icon">

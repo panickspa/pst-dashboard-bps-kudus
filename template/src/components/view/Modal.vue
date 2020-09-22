@@ -19,15 +19,13 @@
                     <div class="form">
                         <input-text type="text" name="icon" v-model="icon"></input-text>
                     </div>
-                    <div class="grid-2 form">
-                        <!-- <input-checkbox 
-                            name="shader" 
-                            id="shader"
-                            v-model="features"
-                            v-on:in="preview"
-                            label="Turn on background shader"
-                            :value="1">
-                        </input-checkbox> -->
+                    <input-checkbox-group 
+                        v-model="features.checkedboxes"
+                        :checkboxes="features.checkboxes"
+                        :name="features.name"
+                        :gridCol="2">
+                    </input-checkbox-group>
+                    <!-- <div class="grid-2 form">
                         <div class="checkbox">
                             <input type="checkbox" name="shader" id="shader" v-model="features" v-bind:value="1">
                             <label for="shader">Turn on background shader</label>
@@ -54,7 +52,7 @@
                                 Custom Button
                             </label>
                         </div>
-                    </div>    
+                    </div>     -->
                 </div>
                 <div class="flex-row flex-end action">
                     <div class="flex-col" style="margin-right: 1em;">
@@ -67,11 +65,11 @@
             </div>
         </div>
         <modal-default 
-            :closeBtn="features.find(e => Number(e) == 6)?true:false" 
-            :okBtn="features.find(e => Number(e) == 3)?true:false"
-            :cancelBtn="features.find(e => Number(e) == 4)?true:false"
-            :shader="features.find(e => Number(e) == 1) ? true:false" 
-            :closedWhenShaderClicked="features.find(e => Number(e) == 2) ? true : false"
+            :closeBtn="features.checkedboxes.find(e => Number(e) == 6)?true:false" 
+            :okBtn="features.checkedboxes.find(e => Number(e) == 3)?true:false"
+            :cancelBtn="features.checkedboxes.find(e => Number(e) == 4)?true:false"
+            :shader="features.checkedboxes.find(e => Number(e) == 1) ? true:false" 
+            :closedWhenShaderClicked="features.checkedboxes.find(e => Number(e) == 2) ? true : false"
             :hidden="hidden" 
             :icon="icon"
             v-on:hide="close(true)">
@@ -80,14 +78,14 @@
                 <h2>{{headerModal}}</h2>
                 <p>{{msgModal}}</p>
             </div>
-            <div class="btn mr-2" slot="before-btn" v-if="features.find(e => Number(e) == 5) ? true : false">
+            <div class="btn mr-2" slot="before-btn" v-if="features.checkedboxes.find(e => Number(e) == 5) ? true : false">
                 {{customButton}}
             </div>
         </modal-default>
         <modal-blank 
-            :closeBtn="features.find(e => Number(e) == 6)?true:false"
-            :shader="features.find(e => Number(e) == 1) ? true:false" 
-            :closedWhenShaderClicked="features.find(e => Number(e) == 2) ? true : false"
+            :closeBtn="features.checkedboxes.find(e => Number(e) == 6)?true:false"
+            :shader="features.checkedboxes.find(e => Number(e) == 1) ? true:false" 
+            :closedWhenShaderClicked="features.checkedboxes.find(e => Number(e) == 2) ? true : false"
             :hidden="hidden2" 
             :icon="icon"
             v-on:hide="close(false)">
@@ -96,7 +94,7 @@
                 <h2>{{headerModal}}</h2>
                 <p>{{msgModal}}</p>
             </div>
-            <div class="btn mr-2" slot="before-btn" v-if="features.find(e => Number(e) == 5) ? true : false">
+            <div class="btn mr-2" slot="before-btn" v-if="features.checkedboxes.find(e => Number(e) == 5) ? true : false">
                 {{customButton}}
             </div>
         </modal-blank>
@@ -112,8 +110,43 @@
                headerModal: `Default modal header`,
                msgModal: `Default modal message`,
                customButton: `Custom Button`,
-               icon: `icon-window`,
-               features: [6, 2, 5],
+               icon: `window`,
+               features:{
+                    name: 'Example-Checkboxes-Group',
+                    checkboxes:[
+                        {
+                            value: 1,
+                            name: 'shader',
+                            label: `Turn on background shader`
+                        },
+                        {
+                            value: 2,
+                            name: 'closed-shader',
+                            label: 'Closed when outside clicked'
+                        },
+                        {
+                            value: 3,
+                            name: 'ok-btn',
+                            label: 'Oke Button'
+                        },
+                        {
+                            value: 4,
+                            name: 'c-btn',
+                            label: 'Cancel Button'
+                        },
+                        {
+                            value: 5,
+                            name: 'cust-btn',
+                            label: 'Custom Button'
+                        },
+                        {
+                            value: 6,
+                            name: 'cls-btn',
+                            label: 'Close Button'
+                        }
+                    ],
+                    checkedboxes:[3,2,6]
+                },
                hidden: true,
                hidden2: true
            }
