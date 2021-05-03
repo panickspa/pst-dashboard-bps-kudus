@@ -31,7 +31,10 @@
                                     </select>
                                 </div>
                                 <div class="flex-col w-100" v-else-if="inp.type == `checkbox`">
-                                    <div class="label-checkbox" v-text="inp.name"></div>
+                                    <input-checkbox-group :checkboxes="inp.checkboxes" v-model="inp.checkedboxes">
+                                        <div slot="title" v-text="inp.name" class="label-checkbox"></div>
+                                    </input-checkbox-group>
+                                    <!-- <div class="label-checkbox" v-text="inp.name"></div>
                                     <div class="checkbox-grid">
                                         <div class="checkbox" v-for="box in inp.checkboxes" v-bind:key="box.name">
                                             <div class="box-checkbox">
@@ -40,7 +43,7 @@
                                             <input :type="`checkbox`" :id="box.name" :value="box.value" v-model="box.checked" @change="inp.valid = validCheckboxes(inp.checkboxes)">
                                             <label :for="box.name" v-text="box.label"></label>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="flex-row flex-center input" v-else-if="!inp.type.includes(`checkbox`)">
                                     <input 
@@ -64,12 +67,14 @@
                                                 :min="inp.min"
                                                 @click="inp.type = (inp.type == `password-hide` ? `password-show` : `password-hide`)"
                                             >
-                                                <svg-icon icon="eye-fill" :key="inp.name+'-show'" v-if="inp.type == `password-hide`"></svg-icon>
-                                                <svg-icon icon="eye-slash-fill" :key="inp.name+'-hide'" v-if="inp.type == `password-show`"></svg-icon>
+                                                <!-- <svg-icon icon="eye-fill" :key="inp.name+'-show'" v-if="inp.type == `password-hide`"></svg-icon> -->
+                                                <i class="icon-eye-fill" :key="inp.name+'-show'" v-if="inp.type == `password-hide`"></i>
+                                                <i class="icon-eye-slash-fill" :key="inp.name+'-hide'" v-if="inp.type == `password-show`"></i>
+                                                <!-- <svg-icon icon="eye-slash-fill" :key="inp.name+'-hide'" v-if="inp.type == `password-show`"></svg-icon> -->
                                             </div>
                                         </div>
                                         <div class="flex-col valid-icon">
-                                            <svg-icon v-if="!validationRule(
+                                            <!-- <svg-icon v-if="!validationRule(
                                                 {
                                                     text: inp.data,
                                                     min: inp.min,
@@ -85,7 +90,26 @@
                                                     required: inp.required
                                                 }
                                             ) && inp.required" icon="check-circle" class="green"></svg-icon>
-                                            <div v-else class="blank"></div>
+                                            <div v-else class="blank"></div> -->
+                                            <i v-bind:class="{
+                                                'icon-x-circle red' : !validationRule(
+                                                    {
+                                                        text: inp.data,
+                                                        min: inp.min,
+                                                        regexp: inp.regexp,
+                                                        required: inp.required
+                                                    }
+                                                ) && inp.required,
+                                                'icon-check-circle green' : validationRule(
+                                                    {
+                                                        text: inp.data,
+                                                        min: inp.min,
+                                                        regexp: inp.regexp,
+                                                        required: inp.required
+                                                    }
+                                                ) && inp.required
+                                            }"></i>
+                                            <div v-if="!inp.required" class="blank"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -117,7 +141,11 @@
 
 <script>
     import { validCheckboxes, validationRule} from "../../module/validation.js"
+    import InputCheckboxGroup from "../input/CheckboxGroup"
     export default {
+        components:{
+            InputCheckboxGroup
+        },
         props:{
             submitBtn:{
                 type: Boolean,
@@ -128,9 +156,6 @@
             }
         },
         methods: {
-            // preview(e){
-            //     console.log(e)
-            // },
             prefixAnd(e){
                 return e.i == e.length-1 ? ' and' : ( e.i < e.length-1 ? `,` : ``)
             },
@@ -144,7 +169,6 @@
                     this.warn.item = required
                     this.warn.active = true
                     this.valid = false
-                    // console.log(this.warn.item)
                 }
                 else {
                     this.warn.item = ''

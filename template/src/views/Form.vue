@@ -2,7 +2,7 @@
     <div class="content">
         <form-default :inputList="list" v-on:submitClick="submit">
             <div slot="header">
-                <h3>Validation Form Example</h3>
+                <h2>Validation Form Example</h2>
             </div>
         </form-default>
         <modal-default :hidden="hidden" v-on:hide="close">
@@ -21,7 +21,13 @@
 </template>
 
 <script>
+const FormDefault = () => import(/* webpackPrefetch: true */ "../components/form/Default")
+const ModalDefault = () => import(/* webpackPrefetch: true */ "../components/modal/Default")
     export default {
+        components:{
+            FormDefault,
+            ModalDefault
+        },
         methods: {
             submit(evt){
                 console.log(evt)
@@ -102,7 +108,6 @@
                             }
                         ],
                         data: 0
-                        // required: true
                     },
                     {
                         name: 'Agreement',
@@ -131,7 +136,3 @@
         },
     }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

@@ -9,7 +9,8 @@
                             <div class="flex-row flex-center">
                                 <div class="flex-col flex-center toolbar-icon">
                                     <span class="icon-modal icon" v-if="icon ? icon.length > 0 : false">
-                                        <svg-icon :icon="icon"></svg-icon>
+                                        <!-- <svg-icon :icon="icon"></svg-icon> -->
+                                        <i :class="`icon-${icon}`"></i>
                                     </span>
                                 </div>
                                 <div class="flex-col flex-center toolbar-header">
@@ -17,7 +18,8 @@
                                 </div>
                                 <div class="flex-col flex-center toolbar-action h-100">
                                     <span class="icon i-x close" v-on:click="hide(`btn-close`)" v-if="closeBtn">
-                                        <svg-icon :icon="'x'"></svg-icon>
+                                        <!-- <svg-icon :icon="'x'"></svg-icon> -->
+                                        <i class="icon-x"></i>
                                     </span>
                                     <!-- <div class="btn minimize"></div> -->
                                 </div>
@@ -81,86 +83,6 @@
     }
 </script>
 
-<style lang="scss" scoped>
-.modal{
-    width: 100%;
-    height: 100vh;
-    position: fixed;
-    top: 0%;
-    bottom: 0%;
-    left: 0%;
-    right: 0%;
-    display: block;
-    background-color: none;
-    z-index: 2;
-}
-.modal-content{
-    position: relative;
-    background-color: none;
-    z-index: 2;
-}
-.toolbar-header{
-    flex-grow: 2;
-}
-.toolbar-action{
-    // flex-grow: 1;
-    align-items: flex-end;
-}
-.toolbar-action *{
-    cursor: pointer;
-    min-height: 21px;
-}
-.toolbar-icon{
-    // flex-grow: 1;
-    min-height: 2em;
-    align-items: flex-start;
-}
-.icon{
-    color: var(--font-default);
- font-size: 1.2em;
- padding: 5px;
-}
-.i-x{
-    height: 100%;
-    transition: color 250ms ease-in-out, background-color 250ms ease-in-out;
-}
-.i-x:hover svg{
-    fill: white;
-}
-.i-x:hover{
-    background-color: var(--red);
-    color: white;
-    transition: color 250ms ease-in-out, background-color 250ms ease-in-out;
-}
-.modal-message{
-    min-height: 20vh;
-    min-width: 26vw;
-    max-height: 75vh;
-    padding-top: 10px;
-    padding-left: 32px;
-    padding-right: 32px;
-    overflow-y: auto;
-    margin-bottom: 25px;
-}
-.footer{
-    padding: 10px 4px 10px 4px;
-    // border-top-style: solid;
-    // border-top-width: 1px;
-    background-color: var(--primary-color-light);
-    justify-content: flex-end;
-    overflow-x: auto;
-}
-.modal-content>.flex-row>.wrapper{
-    z-index: 2;
-}
-
-.shader{
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    z-index: 1;
-}
-.shader-bg{
- background-color: var(--secondary-color-shader);
-}
+<style lang="scss">
+@import /* webpackPrefetch: true */ "../../assets/modal.scss";
 </style>

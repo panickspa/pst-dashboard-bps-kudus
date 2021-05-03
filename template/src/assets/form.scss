@@ -1,0 +1,54 @@
+// form rule
+.form{
+    .password-toggle, .password-toggle>span{
+        cursor: pointer;
+    }
+    .password-toggle{
+        border-left-style: none;
+    }
+    .valid-icon{
+        margin-left: 4px;
+    }
+    
+    .header, .list-input{
+        padding: 10px;
+    }
+    .requirement{
+        margin-left: 2px;
+        font-size: .6em;
+        align-self: flex-end;
+        margin-bottom: 2px;
+    }
+    .blank{
+        width: 16px;
+    }
+    .list-input{
+        margin-bottom: 1em;
+    }
+    .input-item{
+        margin-bottom: 0.5em;
+    }
+    
+    .checkbox-grid{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+    
+    .label-checkbox{
+        margin-bottom: 10px;
+    }
+    
+    .action{
+        justify-content: flex-end;
+        background: var(--primary-color-light);
+        padding: 10px 20px 20px 20px;
+    }
+    .warn{
+        min-height: 1.2em;
+        margin-bottom: 10px;
+    }
+    
+    .warn-red *{
+        color: var(--red);
+    }
+}

@@ -19,7 +19,7 @@
     }
 </script>
 
-<style scoped>
+<style>
 h3{
     margin-bottom: 16px;
 }

@@ -4,7 +4,7 @@
             <h3 class="title-input" slot="title">Select Theme</h3>
         </input-radio>
         <div class="color-grade">
-            <h3 class="title-input">Color Grade</h3>
+            <h3 class="title-input">Color</h3>
             <div class="flex flex-col flex-center" id="font-default" style="background-color: var(--font-default);">
                 <span style="color: var(--font-negative)">Font Color</span>
             </div>
@@ -28,8 +28,8 @@
             </div>
         </div>
         <div class="flex-col font">
-            <h3 class="title-input">Font Size</h3>
-            <input class="slider" type="range" min="13" max="18" v-model="$store.state.fontSize" @change="pre">
+            <h3 class="title-input">Font Size : {{$store.state.fontSize}} px</h3>
+            <input class="slider" type="range" min="13" max="24" v-model="$store.state.fontSize">
         </div>
         <!-- <input-textarea v-model="textA" :name="'chat'" :shortcut="['Shift', 'Enter']" @shortcutpressed="preview"></input-textarea>
         <textarea value="text"></textarea> -->
@@ -37,15 +37,10 @@
 </template>
 
 <script>
+const InputRadio = () => import(/* webpackPrefetch: true */ '../components/input/Radio.vue')
     export default {
-        methods: {
-            changeTheme(e){
-                // console.log('theme change', e)
-                this.$store.state.theme = e
-            },
-            pre(e){
-                console.log(e.target.value)
-            }
+        components:{
+            InputRadio
         },
         created() {
             this.fontSize = this.$store.state.fontSize
@@ -91,19 +86,14 @@
                 },
             }
         },
-        watch: {
-            '$store.state.fontSize': function(val){
-                console.log(val, 'store fontsize')
-                // this.$store.state.fontSize = val
-            }
-        },
     }
 </script>
 
 <style lang="scss">
 #home{
     box-sizing: border-box;
-    display: block;
+    // display: block;
+    // width: 100%;
 }
 .color-grade>div{
     height: 40px;

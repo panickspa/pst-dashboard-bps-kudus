@@ -82,11 +82,10 @@
                 this.$refs['input-text'].style.height = 'auto';
                 this.$refs.input.style.height =  this.$refs['input-text'].scrollHeight+'px';
                 this.$refs['input-text'].style.height =  this.$refs['input-text'].scrollHeight+'px';
-                // console.log(this.$refs.input)
             }
         },
         mounted() {
-            console.log(this.shortcut)
+            // console.log(this.shortcut)
             if(this.shortcut.length > 0){
                 let _vm = this
                 this._keyListener = function(e) {
@@ -130,8 +129,6 @@
     .text-area{
         display: flex;
         flex-direction: column;
-        // min-height: 1em;
-        // height: auto;
     }
     textarea, textarea:focus{
         border: none;

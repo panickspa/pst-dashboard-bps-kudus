@@ -20,7 +20,7 @@ dark-mode (completed)
 
 font-size
 --------------
-responsive font size
+responsive font size (completed)
 
 extras
 ----------------
@@ -53,6 +53,6 @@ next version v1.00
 ===================
 grid
 layout
-pwa ready
+
 draggable menu
 navbar bottom

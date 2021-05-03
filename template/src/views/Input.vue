@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper">
+    <div class="wrapper mb">
         <div class="flex-row">
             <div class="flex-col">
                 <input-checkbox-group
@@ -64,7 +64,19 @@
 </template>
 
 <script>
+const InputCheckboxGroup = () => import("../components/input/CheckboxGroup")
+const InputText = () => import("../components/input/Text")
+const InputSelect = () => import("../components/input/Select")
+const InputTextarea = () => import("../components/input/Textarea")
+const InputRadio = () => import("../components/input/Radio")
     export default {
+        components:{
+            InputCheckboxGroup,
+            InputText,
+            InputSelect,
+            InputTextarea,
+            InputRadio
+        },
         data() {
             return {
                 radio:{
@@ -138,7 +150,7 @@
     }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 h4, .mb{
     margin-bottom: 1em;
 }

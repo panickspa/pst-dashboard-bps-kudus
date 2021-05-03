@@ -103,7 +103,18 @@
 </template>
 
 <script>
+const ModalDefault = () => import(/* webpackPrefetch: true */ '../components/modal/Default')
+const ModalBlank = () => import(/* webpackPrefetch: true */ '../components/modal/Blank')
+const InputText = () => import('../components/input/Text')
+const InputCheckboxGroup = () => import('../components/input/CheckboxGroup')
+
     export default {
+        components: {
+            ModalDefault,
+            ModalBlank,
+            InputText, 
+            InputCheckboxGroup
+        },
        data() {
            return {
                titleModal: "Default Title",
@@ -153,7 +164,7 @@
        },
        methods: {
            close(e){
-               console.log("on close")
+            //    console.log("on close")
                if (e)
                this.hidden = true
                else this.hidden2 = true
@@ -169,7 +180,7 @@
     }
 </script>
 
-<style scoped>
+<style lang="scss">
 .wrapper{
     position: unset;
 }

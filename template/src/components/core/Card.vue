@@ -38,7 +38,6 @@
 </script>
 
 <style lang="scss" scoped>
-@import "../color.scss";
 .card-ns{
   box-shadow: none !important;
 }

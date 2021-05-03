@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Home from '../components/view/Home.vue'
-import About from '../components/view/About.vue'
-import Modal from '../components/view/Modal.vue'
-import Form from '../components/view/Form.vue'
-import Input from '../components/view/Input.vue'
+const Home = () => import(/* webpackChunkName: "home" */ '../views/Home.vue')
+const About = () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+const Modal = () => import(/* webpackChunkName: "modal" */ '../views/Modal.vue')
+const Input =  () => import(/* webpackChunkName: "input" */ '../views/Input.vue')
+const Form = () => import(/* webpackChunkName: "form" */ '../views/Form.vue') 
 
 Vue.use(VueRouter)
 

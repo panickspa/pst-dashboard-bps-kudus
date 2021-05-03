@@ -1,9 +1,16 @@
+import '@babel/polyfill'
+// import 'mutationobserver-shim'
 import Vue from 'vue'
+// import './plugins/bootstrap-vue'
 import App from './App.vue'
-import "./components"
+import "./views"
 import router from './router'
 import store from './store'
-import('./assets/icons/style.css');
+
+// const SvgIcon = () => import(/* webpackPrefetch: true */ "./icon/Icon.vue")
+// Vue.component(
+//   'svg-icon', SvgIcon
+// )
 
 Vue.config.productionTip = false
 

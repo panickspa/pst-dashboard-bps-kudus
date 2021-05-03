@@ -12,39 +12,56 @@
                 v-bind:value="value" 
                 v-bind="$attrs" 
                 v-on:input="$emit('input', $event.target.value)"
+                @click="p($event.target)"
                 :placeholder="hint">
-            <div class="flex-col" v-if="type.includes(`password`)">
-                <div 
+            <div 
                     v-if="type == `password`" 
-                    class="password-toggle"
+                    class="password-toggle flex-row flex-center"
                     :min="min"
                     @click="hidePass = (hidePass ? false : true)"
                 >
-                    <span v-bind:class="{
-                        'icon-eye-fill': !hidePass,
-                        'icon-eye-slash-fill': hidePass
-                    }" ></span>
-                </div>
+                <i v-bind:class="{
+                    'icon-eye-fill': !hidePass,
+                    'icon-eye-slash-fill': hidePass
+                }"></i>
+                <!-- <svg-icon icon="eye-slash-fill" v-if="hidePass"></svg-icon>
+                <svg-icon icon="eye-fill" v-if="!hidePass"></svg-icon> -->
             </div>
-            <div class="flex-col valid-icon" v-if="required">
-                <svg-icon v-if="!validationRule(
+            <!-- <svg-icon v-if="!validationRule(
                     {
                         text: value,
                         min: min,
                         regexp: ( regexp ? regexp : undefined),
                         required: required
                     }
-                ) && required" icon="x-circle" class="red"></svg-icon>
-                <svg-icon v-else-if="validationRule(
+            ) && required" icon="x-circle" class="red"></svg-icon>
+            <svg-icon v-else-if="validationRule(
+                {
+                    text: value,
+                    min: min,
+                    regexp: ( regexp ? regexp : undefined),
+                    required: required
+                }
+            ) && required" icon="check-circle" class="green"></svg-icon> -->
+            <i v-bind:class="{
+                'icon-x-circle red' : !validationRule(
                     {
                         text: value,
                         min: min,
                         regexp: ( regexp ? regexp : undefined),
                         required: required
                     }
-                ) && required" icon="check-circle" class="green"></svg-icon>
-                <div v-else class="blank"></div>
-            </div>
+                ) && required,
+                'icon-check-circle green' : validationRule(
+                    {
+                        text: value,
+                        min: min,
+                        regexp: ( regexp ? regexp : undefined),
+                        required: required
+                    }
+                ) && required
+            }"></i>
+            <!-- <div v-else-if="required" class="blank"></div> -->
         </div>
     </div>
 </template>
@@ -93,7 +110,10 @@
             },
         },
         methods: {
-            validationRule
+            validationRule,
+            p(e){
+                console.log(e.datepicker)
+            }
         },
         data() {
             return {
@@ -104,5 +124,8 @@
 </script>
 
 <style lang="scss" scoped>
-
+.password-toggle{
+    margin-right: 10px;
+    cursor: pointer;
+}
 </style>

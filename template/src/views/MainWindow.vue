@@ -58,7 +58,12 @@
 .content{
     margin-left: 15px;
     margin-right: 15px;
-    position: relative;
+    // position: initial;
+    // display: initial;
+    // width: 100%;
+}
+.content>*{
+    width: 100%;
 }
 @media screen and (max-width: 1080px) {
     .main{
@@ -72,7 +77,7 @@
 @media screen and (max-width: 500px) {
     .main{
         margin-left: 0px;
-        margin-top: 38px;
+        margin-top: calc(var(--fsize) + 22px);
         transition: all 200ms ease-in-out;
     }
     #menu-toggle{

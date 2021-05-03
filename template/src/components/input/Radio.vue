@@ -11,14 +11,7 @@
                     :value="r.value"
                     @change="rChange">
                 <label :for="`${name}-${r.name}`" v-text="r.label"></label>
-                <div class="box-radio">
-                    <div class="flex-row flex-center box-dot">
-                        <svg-icon 
-                            :icon="'circle-fill'" 
-                            color="var(--secondary-color)" >
-                        </svg-icon>
-                    </div>
-                </div>
+                <!-- <div class="box-radio"></div> -->
             </div>
         </div>
     </div>
@@ -55,7 +48,6 @@
             }
         },
         created() {
-            // console.log(this.selected, 'selected')
             this.selectedR = this.selected
         },
         data() {
@@ -70,41 +62,33 @@
 .grid{
     display: grid;
     grid-template-columns: repeat(var(--grid-number), 1fr);
+    align-items: center;
+    grid-gap: 1em;
 }
-.radio{
-    margin-left: 10px;
-}
+
 .box-radio{
     position: absolute;
     height: .4em;
     width: .4em;
     padding: .2em;
     display: flex;
+    // bottom: 10%;
+    // bottom: 0%;
+    top: 0%;
+    // margin-top: calc(var(--fsize) / 2);
     flex-direction: column;
     justify-content: center;
-    border: 2px solid var(--secondary-color);
+    border: 1px solid var(--secondary-color);
     border-radius: 100%;
 }
 svg{
     font-size: 1em;
 }
-input[type="radio"]+label::before{
-    content: "";
-    position: absolute;
-    width: var(--fsize);
-    height: var(--fsize);
-    z-index: 1;
-    left: 0%;
-}
-
-input[type="radio"]+label+.box-radio > .box-dot{
-    opacity: 0%;
-    display: none;
-    transition: opacity .2s ease-in-out;
-}
-
-input[type="radio"]:checked+label+.box-radio > .box-dot{
-    opacity: 100%;
-    display: inherit;
-}
+// input[type="radio"]+label+.box-radio{
+//     background-color: none;
+//     transition: background-color .2s ease-in-out;
+// }
+// input[type="radio"]:checked+label+.box-radio{
+//     background-color: var(--secondary-color);
+// }
 </style>

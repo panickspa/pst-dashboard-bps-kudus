@@ -1,0 +1,179 @@
+select, select:focus, 
+input[type="text"], input[type="password"], input[type="date"], 
+input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus{
+    width: 100%;
+    border: none;
+    border-radius: 0%;
+    outline: none;
+    background-color: none;
+    background: none;
+}
+
+textarea, input, select{
+  font-size: var(--fsize);
+}
+
+textarea::placeholder, input::placeholder{
+    color: var(--secondary-color);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator{
+  cursor: pointer;
+  fill: var(--font-default);
+  color: var(--font-default);
+  background: var(--font-default);
+  content: "";
+  padding: 0%;
+  margin: 0%;
+  width: var(--fsize);
+  height: var(--fsize);
+  border-radius: 100%;
+  clip-path: polygon(49% 62%, 76% 36%, 84% 47%, 49% 80%, 16% 46%, 23% 37%);
+}
+input[type=date]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    display: none;
+}
+select>option:disabled{
+  background-color: var(--primary-color) !important;
+}
+
+select>option{
+  background-color: var(--primary-color) !important;
+}
+select>*{
+  border-color: var(--secondary-color);
+  outline: none;
+  border: none;
+}
+
+.checkbox, .radio{
+//  margin-bottom: 5px;
+//  display: flex;
+//  flex-direction: row;
+ position: relative;
+//  transition: all 1s;
+}
+
+.checkbox,
+.checkbox input,
+.checkbox label,
+.radio,
+.radio input,
+.radio label{
+  cursor: pointer;
+}
+
+.checkbox label{
+  display: block;
+  margin-left: 20px;
+  padding-left: 7px;
+  line-height: 20px;
+  text-align: left;
+}
+
+.checkbox label::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 0;
+  left: 0;
+}
+
+input[type="checkbox"],
+input[type="checkbox" i]{
+  opacity: 0;
+  z-index: -1;
+  position: absolute;
+  cursor: pointer;
+  transition: all 1s;
+}
+
+.box-checkbox{
+  border: 1px solid var(--secondary-color);
+  width: 1em;
+  height: 1em;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.radio label, .checkbox label{
+  display: block;
+  margin-left: calc(var(--fsize) * 1.5);
+  // padding-left: 7px;
+  line-height: 20px;
+  text-align: left;
+  margin-bottom: var(--fsize);
+}
+
+input[type="radio"],
+input[type="radio" i]{
+  opacity: 0;
+  z-index: -1;
+  position: absolute;
+  cursor: pointer;
+  transition: all 1s;
+}
+
+input[type="radio"]+label::after{
+  content: "";
+  position: absolute;
+  width: var(--fsize);
+  height: var(--fsize);
+  // padding: 3px;
+  transform: scale(0.8);
+  // top: calc( (var(--fsize) - 6px) / 2);
+  z-index: 1;
+  left: 0%;
+  top: 0%;
+  border: 1px solid var(--secondary-color);
+  background-color: none;
+  border-radius: 100%;
+  transition: background-color .1s ease-in-out;
+}
+input[type="radio"]:checked+label::after{
+  background-color: var(--secondary-color);
+}
+
+.input{
+  padding: 4px;
+  border: 1px solid var(--primary-color);
+}
+
+.input:focus-within{
+    box-shadow: 0px 0px 3px var(--secondary-color-light);
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 25px;
+  background: var(--primary-color-light);
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: var(--secondary-color);
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: var(--secondary-color);
+  cursor: pointer;
+}

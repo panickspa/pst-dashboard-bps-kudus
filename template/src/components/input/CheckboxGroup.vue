@@ -11,13 +11,7 @@
                     v-model="checkedBoxes"
                     :value="checkboxes[c-1].value"
                     @change="valid(checkboxes)">
-                <div class="box-checkbox">
-                    <svg-icon 
-                        class="check"
-                        icon="check"
-                        color="var(--secondary-color)"
-                    ></svg-icon>
-                </div>
+                <div class="box-checkbox"></div>
                 <label :for="`${name}-${checkboxes[c-1].name}`" v-text="checkboxes[c-1].label"></label>
             </div>
         </div>
@@ -60,7 +54,7 @@
             },
             valid(e){
                 this.validity = validCheckboxes(e)
-                console.log(this.validity)
+                // console.log(this.validity)
                 this.$emit('changed', this.checkedBoxes)
             }
         },
@@ -81,6 +75,7 @@
 .grid{
     display: grid;
     grid-template-columns: repeat(var(--grid-number), 1fr);
+    grid-gap: 1em;
 }
 .checkbox{
     margin-left: 10px;
@@ -97,4 +92,21 @@ input:checked+.box-checkbox .check{
     opacity: 100%;
     display: inline;
 }
+input+.box-checkbox::after{
+    content: "";
+    position: absolute;
+    height: calc(var(--fsize) / 2);
+    width: calc(var(--fsize) / 2);
+    left: 10%;
+    border-bottom: 3px solid var(--secondary-color);
+    border-right: 3px solid var(--secondary-color);
+    clip-path: inset(20% 0px 0px 40%);
+    transform: rotate(45deg);
+    opacity: 0%;
+    transition: opacity .1s linear;
+}
+input:checked+.box-checkbox::after{
+    opacity: 100%;
+}
+
 </style>

@@ -33,11 +33,10 @@
         },
         methods: {
             test(e){
-                console.log(e.target.checked)
+                // console.log(e.target.checked)
                 return e.target.checked
             }
         },
-        // props: [ 'checked', 'label'],
     }
 </script>
 

@@ -1,6 +1,9 @@
+// var MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
 module.exports = {
   configureWebpack: {
     optimization: {
+      minimize: true,
       runtimeChunk: 'single',
       splitChunks: {
         chunks: 'all',
@@ -18,6 +21,11 @@ module.exports = {
       },
     },
   },
+  pluginOptions: {
+    webpackBundleAnalyzer: {
+      openAnalyzer: true
+    }
+  },
   chainWebpack: config => {
       config
       .plugin('html')
@@ -25,5 +33,27 @@ module.exports = {
         args[0].title = 'Your App Name'
         return args
       })
-    }
+    },
+  runtimeCompiler: true,
+  // plugins: [new MiniCssExtractPlugin()],
+  // module: {
+  //   rules: [
+  //     // ... other rules omitted
+  //     {
+  //       test: /\.css$/,
+  //       use: [
+  //         process.env.NODE_ENV !== 'production'
+  //           ? 'vue-style-loader'
+  //           : MiniCssExtractPlugin.loader,
+  //         'css-loader'
+  //       ]
+  //     }
+  //   ]
+  // },
+  // plugins: [
+  //   // ... Vue Loader plugin omitted
+  //   new MiniCssExtractPlugin({
+  //     filename: 'style.css'
+  //   })
+  // ],
 }

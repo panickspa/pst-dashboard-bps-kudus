@@ -23,9 +23,6 @@
 <script>
     export default {
         inheritAttrs: false,
-        // model:{
-        //     props: 'value', 
-        // },
         props:{
             name: {
                 type: String,

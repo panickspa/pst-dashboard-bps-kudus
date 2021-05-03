@@ -60,8 +60,6 @@
 .wrapper{
     position: fixed;
     z-index: 4;
-    // top: calc(100% - 2em - 10px);
-    // right: 0%;
 }
 .line-drag{
     height: 1em;
@@ -86,10 +84,7 @@
     user-select:none;
     -o-user-select:none;
 }
-// .menu-container{
-//     max-width: calc(var(--width-menu) / 2);
-//     overflow-x: auto;
-// }
+
 .menu-wrapper{
     display: flex;
     flex-direction: column;
